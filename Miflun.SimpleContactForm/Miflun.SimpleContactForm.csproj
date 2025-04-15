@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ContentTargetFolders>.</ContentTargetFolders>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Miflun.SimpleContactForm</PackageId>
+    <Product>Miflun.SimpleContactForm</Product>
+    <Title>Miflun.SimpleContactForm</Title>
+    <Description>...</Description>
+    <PackageTags>umbraco plugin package</PackageTags>
+    <Version>1.0.0-beta</Version>
+    <Authors>Miflun</Authors>
+    <PackageProjectUrl>https://umbraco.com</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.7.2" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_Plugins\Miflun.SimpleContactForm\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
+    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Migrations\package.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\package.xml" />
+  </ItemGroup>
+</Project>

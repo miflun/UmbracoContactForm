@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MiflunSimpleContactFormContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\Miflun.SimpleContactForm\**\*.*</MiflunSimpleContactFormContentFilesPath>
+  </PropertyGroup>
+
+  <Target Name="CopyMiflunSimpleContactFormAssets" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <MiflunSimpleContactFormContentFiles Include="$(MiflunSimpleContactFormContentFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying Miflun.SimpleContactForm files: $(MiflunSimpleContactFormContentFilesPath) - #@(MiflunSimpleContactFormContentFiles->Count()) files" Importance="high" />
+    <Copy SourceFiles="@(MiflunSimpleContactFormContentFiles)" DestinationFiles="@(MiflunSimpleContactFormContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Miflun.SimpleContactForm\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="ClearMiflunSimpleContactFormAssets" BeforeTargets="Clean">
+    <ItemGroup>
+      <MiflunSimpleContactFormDir Include="$(MSBuildProjectDirectory)\App_Plugins\Miflun.SimpleContactForm\" />
+    </ItemGroup>
+    <Message Text="Clear old Miflun.SimpleContactForm data" Importance="high" />
+    <RemoveDir Directories="@(MiflunSimpleContactFormDir)" />
+  </Target>
+</Project>
