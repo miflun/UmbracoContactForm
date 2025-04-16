@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
@@ -9,15 +9,16 @@
   <PropertyGroup>
     <PackageId>Miflun.SimpleContactForm</PackageId>
     <Product>Miflun.SimpleContactForm</Product>
-    <Title>Miflun.SimpleContactForm</Title>
+    <Title>Simple Contact Form With Macro</Title>
     <Description>A simple contact form with macro package for Umbraco CMS v13. Full source code is available on Git repository.</Description>
     <PackageTags>umbraco plugin package</PackageTags>
-    <Version>1.0.1-beta</Version>
+    <Version>1.0.3-beta</Version>
     <Authors>Miflun</Authors>
     <PackageProjectUrl>https://github.com/miflun/UmbracoContactForm.git</PackageProjectUrl>
     <RepositoryUrl>https://github.com/miflun/UmbracoContactForm.git</RepositoryUrl>
-    <PackageTags>umbraco umbraco-marketplace</PackageTags>
+    <PackageTags>umbraco-marketplace</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   
   <ItemGroup>
@@ -28,6 +29,10 @@
   <ItemGroup>
     <Content Include="App_Plugins\Miflun.SimpleContactForm\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
     <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
   <ItemGroup>
