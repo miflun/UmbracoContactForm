@@ -12,7 +12,12 @@ You can add macro within Rich Text Editor as well.
 ## Download
 You can add the package using following .NET CLI Command
 
->dotnet add package Miflun.SimpleContactForm --version 1.0.3-beta (please note that version will be changing as upgrades are done to source code)
+>dotnet add package Miflun.SimpleContactForm --version 1.0.4-beta (please note that version will be changing as upgrades are done to source code)
+
+OR
+
+<b>Using Package Manager Console in Visual Studio</b>
+PM> Install-Package Miflun.SimpleContactForm -version 1.0.4-beta
 
 You can also download and install package using Visual Studio Manage Nuget Packages for Solution...
 
@@ -24,7 +29,7 @@ Once the package installation is completed you will find following
 Additionally if you don't have javascript then you will have to include https://code.jquery.com/jquery-3.7.1.min.js, ideally to your layout template
 
 ### SMTP Settings
-<b>Add SMTP settings</b> to you AppSettings.json file so that the emails are sent out, please follow this documentation to add your SMTP
+<b>Add SMTP settings</b> to your AppSettings.json file so that the emails are sent out, please follow this documentation to add your SMTP
 https://docs.umbraco.com/umbraco-cms/extending/health-check/guides/smtp
 
 

@@ -1,17 +1,9 @@
-﻿using MailKit;
-using Microsoft.AspNetCore.Builder.Extensions;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Miflun.SimpleContactForm.Models;
 using Miflun.SimpleContactForm.Services;
-using Org.BouncyCastle.Asn1.Pkcs;
-using Serilog.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Routing;
