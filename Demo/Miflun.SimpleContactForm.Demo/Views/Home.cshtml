@@ -1,0 +1,12 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Layout.cshtml";
+}
+
+<h2>@Model.Value("summary", fallback: Fallback.ToAncestors)</h2>
+<div>@Model.Value("detail")</div>
+
+<h3>Form using partial</h3>
+<p>Add your new package implementation here...</p>
