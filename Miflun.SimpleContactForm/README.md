@@ -19,11 +19,12 @@ You can also download and install package using Visual Studio Manage Nuget Packa
 Once the package installation is completed you will find following 
 - Macro (ContactFormWrapper)
 - Macro Partial View (~/Views/MacroPartials/ContactFormWrapper.cshtml)
-- Contact Form View (~/Views/Partials/ContactForm/Index.cshtml~)
+- Contact Form View (~/Views/Partials/ContactForm/Index.cshtml)
 
 Additionally if you don't have javascript then you will have to include https://code.jquery.com/jquery-3.7.1.min.js, ideally to your layout template
 
-Add your SMTP settings to you AppSettings.json file so that the emails are sent out, please follow this documentation to add your SMTP
+### SMTP Settings
+<b>Add SMTP settings</b> to you AppSettings.json file so that the emails are sent out, please follow this documentation to add your SMTP
 https://docs.umbraco.com/umbraco-cms/extending/health-check/guides/smtp
 
 
