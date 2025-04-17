@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Miflun.SimpleContactForm" Version="1.0.5-beta" />
+    <PackageReference Include="Miflun.SimpleContactForm" Version="1.0.6-beta" />
     <PackageReference Include="Umbraco.Cms" Version="13.7.2" />
   </ItemGroup>
 

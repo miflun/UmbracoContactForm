@@ -13,8 +13,10 @@
 }
 else
 {
-    <p class="hero-content">View ContractForm Wrapper loaded from partial</p>
-    <p>@emailToAddress</p>
-    <p>@emailSubject</p>
-    @Html.Partial("~/Views/Partials/ContactForm/Index.cshtml", new Miflun.SimpleContactForm.Models.ContactFormModel())
+    await Html.RenderPartialAsync("~/Views/Partials/ContactForm/Index.cshtml", new Miflun.SimpleContactForm.Models.ContactFormModel() {
+                EmailToAddress = emailToAddress,
+                EmailSubject = emailSubject,
+                Email = string.Empty,
+                Message = string.Empty,
+                Name = string.Empty});
 }
