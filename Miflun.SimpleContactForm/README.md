@@ -12,12 +12,12 @@ You can add macro within Rich Text Editor as well.
 ## Download
 You can add the package using following .NET CLI Command
 
->dotnet add package Miflun.SimpleContactForm --version 1.0.4-beta (please note that version will be changing as upgrades are done to source code)
+>dotnet add package Miflun.SimpleContactForm --version 1.0.6-beta (please note that version will be changing as upgrades are done to source code)
 
 OR
 
 <b>Using Package Manager Console in Visual Studio</b>
-PM> Install-Package Miflun.SimpleContactForm -version 1.0.4-beta
+PM> Install-Package Miflun.SimpleContactForm -version 1.0.6-beta
 
 You can also download and install package using Visual Studio Manage Nuget Packages for Solution...
 

@@ -1,9 +1,9 @@
-﻿using MimeKit;
+﻿using MailKit.Net.Smtp;
+using MimeKit;
+using Org.BouncyCastle.Asn1.Pkcs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
 
 namespace Miflun.SimpleContactForm.Services
 {
@@ -23,21 +23,21 @@ namespace Miflun.SimpleContactForm.Services
         public bool SendEmail(SmtpAccount smtpAccount, string toAddress, string toName, string subject, string body)
         {
             //Prepare the email
-            MailMessage message = new MailMessage();
-            message.From = new MailAddress(smtpAccount.From);
-            message.To.Add(new MailAddress(toAddress));
+            MimeMessage message = new MimeMessage();
+            MailboxAddress mailboxAddress = new MailboxAddress(smtpAccount.Host, smtpAccount.From);
+            message.From.Add(mailboxAddress);
+            message.To.Add(new MailboxAddress(toName, toAddress));
             message.Subject = subject;
-            message.Body = body;
+            BodyBuilder emailBodyBuilder = new BodyBuilder();
+            emailBodyBuilder.TextBody = body;
+            message.Body = emailBodyBuilder.ToMessageBody();
 
             //SMTP could be moved to a separate service
-            SmtpClient smtpClient = new SmtpClient(smtpAccount.Host, smtpAccount.Port);
+            SmtpClient smtpClient = new SmtpClient();
+            smtpClient.Connect(smtpAccount.Host, smtpAccount.Port);
             if (!string.IsNullOrEmpty(smtpAccount.Username) && !string.IsNullOrEmpty(smtpAccount.Password))
             {
-                smtpClient.Credentials = new NetworkCredential(smtpAccount.Username, smtpAccount.Password);
-            }
-            else
-            {
-                smtpClient.UseDefaultCredentials = true;
+                smtpClient.Authenticate(smtpAccount.Username, smtpAccount.Password);
             }
 
             try

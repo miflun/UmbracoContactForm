@@ -30,9 +30,15 @@ namespace Miflun.SimpleContactForm.Controllers
             _smtpAccount = smtpAccount.Value;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string emailToAddress, string emailSubject)
         {
-            return View();
+            var model = new ContactFormModel()
+            {
+                EmailSubject = emailSubject,
+                EmailToAddress = emailToAddress,
+                Email = string.Empty, Message = string.Empty, Name = string.Empty
+            };
+            return View("~/Views/Partials/ContactForm/Index.cshtml", model);
         }
 
         [HttpPost]

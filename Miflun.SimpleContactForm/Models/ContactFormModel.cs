@@ -36,11 +36,13 @@ namespace Miflun.SimpleContactForm.Models
 
         /// <summary>
         /// Gets or sets email to address
+        /// Need this as couldn't figure out how to get values from macro parameters programatically
         /// </summary>
         public required string EmailToAddress { get; set; }
 
         /// <summary>
         /// Gets or sets email subject
+        /// Need this as couldn't figure out how to get values from macro parameters programatically
         /// </summary>
         public required string EmailSubject { get; set; }
     }

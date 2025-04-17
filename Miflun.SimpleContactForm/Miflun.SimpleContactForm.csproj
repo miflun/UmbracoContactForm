@@ -12,7 +12,7 @@
     <Title>Simple Contact Form With Macro</Title>
     <Description>A simple contact form with macro package for Umbraco CMS v13. Full source code is available on Git repository.</Description>
     <PackageTags>umbraco plugin package</PackageTags>
-    <Version>1.0.4-beta</Version>
+    <Version>1.0.6-beta</Version>
     <Authors>Miflun</Authors>
     <PackageProjectUrl>https://github.com/miflun/UmbracoContactForm.git</PackageProjectUrl>
     <RepositoryUrl>https://github.com/miflun/UmbracoContactForm.git</RepositoryUrl>
