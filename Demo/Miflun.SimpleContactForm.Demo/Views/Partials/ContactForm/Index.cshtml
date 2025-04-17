@@ -1,0 +1,102 @@
+﻿@using Miflun.SimpleContactForm.Controllers;
+@model Miflun.SimpleContactForm.Models.ContactFormModel;
+
+@{
+    bool isFormSubmitted = Convert.ToBoolean(TempData["IsEmailSent"]);
+    bool isError = Convert.ToBoolean(TempData["IsError"]);
+}
+
+@using (Html.BeginUmbracoForm<ContactFormController>(nameof(ContactFormController.Submit), null, new { @id = "contactform", @class = "law-cform form-style-2" }, FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-sm-12 px-2">
+            <h4 class="form-title text-center">
+                Contact Us  - Partial View - Migrations folder
+            </h4>
+        </div>
+        @if (isError)
+        {
+            <div class="col-sm-12 px-2">
+                <div class="text-center">
+                    <p class="alert-danger">An error occured, please try again or call our number.</p>
+                </div>
+            </div>
+        }
+        @if (!isFormSubmitted)
+        {
+            <div class="col-sm-12 px-2">
+                <div class="contact-field">
+                    @Html.TextBoxFor(x => x.Name, new { placeholder = "Name", required = true })
+                </div>
+            </div>
+            <div class="col-sm-12 px-2">
+                <div class="contact-field">
+                    @Html.TextBoxFor(x => x.Email, new { placeholder = "Email", required = true })
+                </div>
+            </div>
+            <div class="col-sm-12 px-2">
+                <div class="contact-field">
+                    @Html.TextBoxFor(x => x.Phone, new { placeholder = "Phone", required = true })
+                </div>
+            </div>
+            <div class="col-sm-12 px-2">
+                <div class="contact-field mb-0">
+                    @Html.TextAreaFor(x => Model.Message, new { placeholder = "Message...", rows = "3", required = true })
+                </div>
+            </div>
+            if (!string.IsNullOrEmpty(Model.RecaptchaSiteKey))
+            {
+                <div class="g-recaptcha" data-sitekey="@Model.RecaptchaSiteKey" data-callback="reCaptchaCallBack"></div>
+                <label id="lblMessage" runat="server" clientidmode="static" class="error"></label>
+                <input type="hidden" id="recaptchaCode" name="recaptchaCode" value="" />
+                @Html.HiddenFor(x => x.RecaptchaSiteKey)
+            }
+            @Html.HiddenFor(x => x.EmailToAddress)
+            @Html.HiddenFor(x => x.EmailSubject)
+            <div class="col-sm-12 px-2">
+                <button type="button" name="Submit" value="Submit" class="mt-btn mt-btn-form" onclick="SubmitButtonClicked();">Submit</button>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-12 px-2">
+                <div class="text-center">
+                    <p>Thanks for your enquiry, one of our team members will contact you shortly.</p>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.RecaptchaSiteKey))
+{
+    <script>
+        var reCaptchaCallBack = function (response) {
+            console.log(response);
+            $("#recaptchaCode").val(response);
+        }
+    </script>
+}
+
+<script>
+    var SubmitButtonClicked = function () {
+        console.log("SubmitButtonClicked");
+        var isSubmitOk = true;
+        //Check for ReCaptcha
+        if ($(".g-recaptcha").length) {
+            console.log($(".g-recaptcha").length);
+            if ($("#recaptchaCode").val().length > 0) {
+                isSubmitOk = true;
+            }
+            else {
+                jQuery('#lblMessage').html("Please check ReCaptcha");
+                isSubmitOk = false;
+            }
+        }
+        console.log("isSubmitOk: " + isSubmitOk);
+        if (isSubmitOk) {
+            $("form#contactform").submit();
+        }
+
+    }
+</script>

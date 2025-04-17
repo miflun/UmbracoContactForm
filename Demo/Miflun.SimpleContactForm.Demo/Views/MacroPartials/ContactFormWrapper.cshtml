@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    string emailToAddress = Model.MacroParameters["emailToAddress"] != null ? (string)Model.MacroParameters["emailToAddress"] : "";
+    var emailSubject = Model.MacroParameters["emailSubject"] != null ? (string)Model.MacroParameters["emailSubject"] : "";
+
+}
+
+@if (string.IsNullOrEmpty(emailToAddress) || string.IsNullOrEmpty(emailSubject))
+{
+    <p class="alert-error">Please setup email address and/or email subject</p>
+}
+else
+{
+    <p class="hero-content">View ContractForm Wrapper loaded from partial</p>
+    <p>@emailToAddress</p>
+    <p>@emailSubject</p>
+    @Html.Partial("~/Views/Partials/ContactForm/Index.cshtml", new Miflun.SimpleContactForm.Models.ContactFormModel())
+}
