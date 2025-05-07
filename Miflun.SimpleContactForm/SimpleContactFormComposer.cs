@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Extensions.DependencyInjection;
+using Miflun.SimpleContactForm.Domain;
 using Miflun.SimpleContactForm.Services;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
@@ -22,11 +23,15 @@ namespace Miflun.SimpleContactForm
         {
             builder.Services.AddOptions<SmtpAccount>()
                 .BindConfiguration("Umbraco:CMS:Global:Smtp");
+
+            builder.Services.AddOptions<GoogleRecaptchaSettings>()
+                .BindConfiguration("GoogleRecaptchaSettings");
         }
 
         private static void RegisterServices(IUmbracoBuilder builder)
         {
-            builder.Services.AddSingleton<Services.IEmailSender, EmailSender>();
+            builder.Services.AddSingleton<IEmailSender, EmailSender>();
+            builder.Services.AddSingleton<IReCaptchaService, ReCaptchaService>();
         }
     }
 }
